@@ -17,7 +17,8 @@ public class AccountServer {
     }
 
     public void deposit(String clientId, int amount) {
-        balanceByClientId.put(clientId, balanceByClientId.getOrDefault(clientId, 0) + amount);
+        balanceByClientId.compute(clientId,
+                (ignore, oldBalance) -> (oldBalance == null ? 0 : oldBalance) + amount);
     }
 
     public double balance(String clientId) {
