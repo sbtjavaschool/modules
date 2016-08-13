@@ -1,12 +1,16 @@
 package ru.sbt.payments.server;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AccountServerTest {
     AccountServer accountServer = new AccountServer();
+
+    @Before
+    public void before() {
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void withdrawToMach() {
