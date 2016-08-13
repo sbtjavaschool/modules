@@ -1,5 +1,6 @@
 package ru.sbt.payments.terminal;
 
+import ru.sbt.payments.account.Account;
 import ru.sbt.payments.account.Transaction;
 import ru.sbt.payments.client.AccountServerClient;
 
@@ -15,6 +16,7 @@ public class TerminalImpl implements Terminal {
         this.accountServerClient = accountServerClient;
     }
 
+    @Override
     public void enterCard(String clientId) {
         this.clientId = clientId;
     }
@@ -32,7 +34,8 @@ public class TerminalImpl implements Terminal {
     }
 
     public double balance() {
-        return accountServerClient.getAccount(clientId).getBalance();
+        Account account = accountServerClient.getAccount(clientId);
+        return account.getBalance();
     }
 
     @Override
