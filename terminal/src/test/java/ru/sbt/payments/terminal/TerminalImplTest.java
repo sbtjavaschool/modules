@@ -49,4 +49,12 @@ public class TerminalImplTest {
         terminal.enterCard(clientId);
         assertEquals(300, terminal.balance(), 0);
     }
+
+    @Test
+    public void deposit() throws Exception {
+        String clientId = "dd";
+        terminal.enterCard(clientId);
+        terminal.deposit(100);
+        verify(accountServerClient).deposit(clientId, 100);
+    }
 }
